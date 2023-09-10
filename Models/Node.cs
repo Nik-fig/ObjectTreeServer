@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public int[]? Children { get; set; }
+        public int? Parent { get; set; }
         public Dictionary<string, object>? Properties { get; set; }
     }
 }
