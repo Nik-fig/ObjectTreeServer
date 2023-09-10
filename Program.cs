@@ -11,7 +11,8 @@ builder.Services
     .AddEndpointsApiExplorer()
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     .AddSwaggerGen()
-    .AddTransient(o => new TreeDataContext("./data.json"));
+    .AddTransient(o => new TreeDataContext("./data.json"))
+    .AddCors();
 
 builder.Services.AddControllers();
 
@@ -24,7 +25,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseAuthorization();
+
+app
+    .UseAuthorization()
+    .UseCors(builder => builder.AllowAnyOrigin());
 
 app.MapControllers();
 
